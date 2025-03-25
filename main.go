@@ -8,5 +8,12 @@ import (
 )
 
 func main() {
-	
+	router := chi.NewRouter()
+	router.Use(middleware.Logger)
+
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("welcome home penis"))
+	})
+
+	http.ListenAndServe(":3000", router)
 }
